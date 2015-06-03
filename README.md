@@ -9,6 +9,9 @@ Demo for Android Support Repository v22.2
 ===========
 
 ###效果图：  
+![main](https://github.com/ChoicesWang/DesignDemo/blob/master/screen/00.png)
+![detail](https://github.com/ChoicesWang/DesignDemo/blob/master/screen/04.png)
+![navi](https://github.com/ChoicesWang/DesignDemo/blob/master/screen/54.png)
 
 ###使用：  
     Android SDK v22  
