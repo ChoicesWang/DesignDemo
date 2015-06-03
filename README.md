@@ -6,8 +6,14 @@ Demo for Android Support Repository v22.2
 
 在本Demo用，将会使用使用facebook的最新推出的fresco作为图片加载和缓存框架。https://github.com/facebook/fresco
 
-使用：  
+===========
+
+###效果图：  
+
+###使用：  
     Android SDK v22  
     Android Build Tools v22.0.1  
     Android Support Repository v22.2
+    
+
 
