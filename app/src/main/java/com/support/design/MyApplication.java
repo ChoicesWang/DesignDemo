@@ -23,7 +23,7 @@ public class MyApplication extends Application {
             Flog.plant(tree);
         }
 
-
+        //配置Fresco
         ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
                 .newBuilder(this, new OkHttpClient())
                 .build();
