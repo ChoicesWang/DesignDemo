@@ -45,6 +45,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+    private static final int DEFAULT_PAGES = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new CheeseListFragment(), "相册");
         adapter.addFragment(new CheeseListFragment(), "信息");
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(DEFAULT_PAGES);
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
