@@ -30,6 +30,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 /**
  * 详情页
+ *
  * @author choices
  */
 public class CheeseDetailActivity extends AppCompatActivity {
