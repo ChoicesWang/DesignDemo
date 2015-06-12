@@ -123,7 +123,7 @@ public class CheeseListFragment extends Fragment {
                     Intent intent = new Intent(context, CheeseDetailActivity.class);
                     intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.mName);
                     intent.putExtra(CheeseDetailActivity.EXTRA_IMAGE_URL, holder.mImageUrl);
-
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
             });
