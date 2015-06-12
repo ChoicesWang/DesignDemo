@@ -16,7 +16,6 @@
 
 package com.support.design;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -32,7 +31,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.support.design.adapter.CustomPagerAdapter;
 
@@ -98,8 +96,11 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
-            case R.id.action_settings:
-                Toast.makeText(this, "设置", Toast.LENGTH_LONG).show();
+            case R.id.action_about:
+
+                Intent intent = new Intent(this, MessageActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -121,16 +122,6 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         mDrawerLayout.closeDrawers();
                         mDrawerLayout.setSelected(true);
-
-                        switch (menuItem.getItemId()) {
-                            case R.id.nav_messages:
-                                Context context = MainActivity.this;
-                                Intent intent = new Intent(context, MessageActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                context.startActivity(intent);
-                                break;
-                        }
-
                         return true;
                     }
                 });

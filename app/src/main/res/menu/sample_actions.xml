@@ -16,7 +16,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/menu_settings"
+        android:id="@+id/action_about"
+        android:icon="@drawable/ic_headset"
+        android:title="@string/menu_about"
         app:showAsAction="never" />
 </menu>
