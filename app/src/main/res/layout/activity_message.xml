@@ -37,16 +37,25 @@
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-
             <android.support.design.widget.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:translationY="208dp"
-                android:fitsSystemWindows="true"
+                android:layout_gravity="bottom"
                 app:tabGravity="fill"
                 app:tabIndicatorColor="?attr/colorAccent"
                 app:tabMode="fixed" />
+
+            <!--Android 5.0 以下，使用下面这套解决办法-->
+            <!--<android.support.design.widget.TabLayout-->
+            <!--android:id="@+id/tabs"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:translationY="208dp"-->
+            <!--android:fitsSystemWindows="true"-->
+            <!--app:tabGravity="fill"-->
+            <!--app:tabIndicatorColor="?attr/colorAccent"-->
+            <!--app:tabMode="fixed" />-->
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
