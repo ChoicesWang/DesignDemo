@@ -149,7 +149,7 @@ public class CheeseListFragment extends Fragment {
             super(view);
             mView = view;
             mDraweeView = (SimpleDraweeView) view.findViewById(R.id.draweeView);
-            mTextView = (TextView) view.findViewById(android.R.id.text1);
+            mTextView = (TextView) view.findViewById(R.id.text);
         }
 
     }

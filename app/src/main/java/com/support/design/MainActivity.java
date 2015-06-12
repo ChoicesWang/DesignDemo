@@ -23,9 +23,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -37,8 +34,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.support.design.adapter.CustomPagerAdapter;
 
 /**
  * Demo 主界面
@@ -48,7 +44,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private static final int DEFAULT_PAGES = 2;
+    public static final int DEFAULT_PAGES = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        Adapter adapter = new Adapter(getSupportFragmentManager());
+        CustomPagerAdapter adapter = new CustomPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new CheeseListFragment(), "资讯");
         adapter.addFragment(new CheeseListFragment(), "相册");
         adapter.addFragment(new CheeseListFragment(), "信息");
@@ -140,32 +136,4 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    static class Adapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragments = new ArrayList<>();
-        private final List<String> mFragmentTitles = new ArrayList<>();
-
-        public Adapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragments.add(fragment);
-            mFragmentTitles.add(title);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragments.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitles.get(position);
-        }
-    }
 }
