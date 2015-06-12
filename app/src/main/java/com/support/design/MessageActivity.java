@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.support.design.adapter.CustomPagerAdapter;
 
@@ -21,6 +22,10 @@ public class MessageActivity extends AppCompatActivity {
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (viewPager != null) {
             setupViewPager(viewPager);
