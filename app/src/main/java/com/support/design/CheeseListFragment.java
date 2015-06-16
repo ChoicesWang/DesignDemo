@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
@@ -45,19 +46,52 @@ import java.util.Random;
  */
 public class CheeseListFragment extends Fragment {
 
+    public static final int LIST = 0;
+    public static final int GRID = 1;
+    public static final int STAGGERED = 2;
+
+    public static final String KEY = "Mode";
+
+    public static CheeseListFragment newInstance(int type) {
+        CheeseListFragment fragment = new CheeseListFragment();
+        Bundle b = new Bundle();
+        b.putInt(KEY, type);
+        fragment.setArguments(b);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        RecyclerView rv = (RecyclerView) inflater.inflate(
-                R.layout.fragment_cheese_list, container, false);
+
+        RecyclerView rv = (RecyclerView) inflater.inflate(R.layout.fragment_cheese_list, container, false);
         setupRecyclerView(rv);
         return rv;
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(),
-                getRandomSublist(Cheeses.sCheeseStrings, 40)));
+
+        RecyclerView.LayoutManager layoutManager = null;
+        RecyclerView.Adapter adapter = null;
+        switch (getArguments().getInt(KEY)) {
+            case LIST:
+                layoutManager = new LinearLayoutManager(getActivity());
+                adapter = new MagicAdapter(getActivity(),
+                        getRandomSublist(Cheeses.sCheeseStrings, 40), LIST);
+                break;
+            case GRID:
+                layoutManager = new GridLayoutManager(getActivity(), 3);
+                adapter = new MagicAdapter(getActivity(),
+                        getRandomSublist(Cheeses.sCheeseStrings, 150), GRID);
+                break;
+            case STAGGERED:
+                layoutManager = new LinearLayoutManager(getActivity());
+                adapter = new MagicAdapter(getActivity(),
+                        getRandomSublist(Cheeses.sCheeseStrings, 40), LIST);
+                break;
+        }
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
     private List<String> getRandomSublist(String[] array, int amount) {
@@ -71,18 +105,22 @@ public class CheeseListFragment extends Fragment {
         // return new ArrayList<>(Arrays.asList(Constants.IMAGES));
     }
 
-    public static class SimpleStringRecyclerViewAdapter extends RecyclerView.Adapter<MeiziViewHolder> {
+    public static class MagicAdapter extends RecyclerView.Adapter<MeiziViewHolder> {
+
+        private int mBackground;
+        private List<String> mValues; //名字
+        private HashMap<String, String> mImageMap; // 更加名字绑定的图片地址
+
+        private int cellType;
 
         private final TypedValue mTypedValue = new TypedValue();
-        private int mBackground;
-        private List<String> mValues;
-        private HashMap<String, String> mImageMap;
 
-        public SimpleStringRecyclerViewAdapter(Context context, List<String> items) {
+        public MagicAdapter(Context context, List<String> items, int cellType) {
             context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
             mBackground = mTypedValue.resourceId;
             mValues = items;
 
+            this.cellType = cellType;
             mImageMap = new HashMap<>();
 
 //            int size = mValues.size();
@@ -93,9 +131,14 @@ public class CheeseListFragment extends Fragment {
 
             Random random = new Random();
             for (String key : mValues) {
+                // 随机绑定图片
                 mImageMap.put(key, Constants.IMAGES[random.nextInt(Constants.IMAGES.length)]);
             }
+        }
 
+        @Override
+        public int getItemViewType(int position) {
+            return cellType;
         }
 
         public String getValueAt(int position) {
@@ -104,8 +147,19 @@ public class CheeseListFragment extends Fragment {
 
         @Override
         public MeiziViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.list_item, parent, false);
+            int layoutId = R.layout.list_item;
+            switch (viewType) {
+                case LIST:
+                    layoutId = R.layout.list_item;
+                    break;
+                case GRID:
+                    layoutId = R.layout.grid_item;
+                    break;
+                case STAGGERED:
+                    layoutId = R.layout.list_item;
+                    break;
+            }
+            View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
             view.setBackgroundResource(mBackground);
             return new MeiziViewHolder(view);
         }
@@ -113,21 +167,8 @@ public class CheeseListFragment extends Fragment {
         @Override
         public void onBindViewHolder(final MeiziViewHolder holder, int position) {
             holder.mName = mValues.get(position);
-            holder.mImageUrl = mImageMap.get(holder.mName);
             holder.mTextView.setText(mValues.get(position));
-
-            holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, CheeseDetailActivity.class);
-                    intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.mName);
-                    intent.putExtra(CheeseDetailActivity.EXTRA_IMAGE_URL, holder.mImageUrl);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
-            });
-
+            holder.mImageUrl = mImageMap.get(holder.mName);
             holder.mDraweeView.setImageURI(Uri.parse(holder.mImageUrl));
         }
 
@@ -141,15 +182,25 @@ public class CheeseListFragment extends Fragment {
         public String mName;
         public String mImageUrl;
 
-        public final View mView;
         public final SimpleDraweeView mDraweeView;
         public final TextView mTextView;
 
         public MeiziViewHolder(View view) {
             super(view);
-            mView = view;
             mDraweeView = (SimpleDraweeView) view.findViewById(R.id.draweeView);
             mTextView = (TextView) view.findViewById(R.id.text);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, CheeseDetailActivity.class);
+                    intent.putExtra(CheeseDetailActivity.EXTRA_NAME, mName);
+                    intent.putExtra(CheeseDetailActivity.EXTRA_IMAGE_URL, mImageUrl);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
         }
 
     }
