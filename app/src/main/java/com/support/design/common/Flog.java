@@ -440,7 +440,7 @@ public final class Flog {
             if (showLine) {
                 logMessage(priority, createTag(), message);
             } else {
-                logMessage(priority, "Fans", message);
+                logMessage(priority, "Log", message);
             }
 
 

@@ -116,7 +116,9 @@ public class CheeseListFragment extends Fragment {
         private final TypedValue mTypedValue = new TypedValue();
 
         public MagicAdapter(Context context, List<String> items, int cellType) {
+
             context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
+
             mBackground = mTypedValue.resourceId;
             mValues = items;
 

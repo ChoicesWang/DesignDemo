@@ -19,7 +19,7 @@ public class MyApplication extends Application {
 
         if (BuildConfig.DEBUG) {
             Flog.DebugTree tree = new Flog.DebugTree();
-            tree.setShowLine(true); // 是否打印类名和行号
+            tree.setShowLine(false); // 是否打印类名和行号
             Flog.plant(tree);
         }
 
