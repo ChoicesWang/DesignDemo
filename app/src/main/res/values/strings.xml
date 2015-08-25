@@ -26,4 +26,7 @@
     <string name="checkin">Checkin</string>
     <string name="menu_about">更多</string>
 
+    <string name="open">open</string>
+    <string name="close">close</string>
+
 </resources>

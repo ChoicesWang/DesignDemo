@@ -27,19 +27,19 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.support.design.adapter.CustomPagerAdapter;
-import com.support.design.common.Flog;
 
 /**
  * Demo 主界面
  * 持续修改中
+ *
  * @author Choices
  */
 public class MainActivity extends AppCompatActivity {
@@ -57,13 +57,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final ActionBar ab = getSupportActionBar();
-        if (ab != null) {
-            ab.setHomeAsUpIndicator(R.drawable.ic_menu);
-            ab.setDisplayHomeAsUpEnabled(true);
-        }
+        // 因为已经有ActionBarDrawerToggle了。他是个动画，所有就不需要下面这个 R.drawable.ic_menu
+
+//        final ActionBar ab = getSupportActionBar();
+//        if (ab != null) {
+//            ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+//            ab.setDisplayHomeAsUpEnabled(true);
+//        }
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                toolbar, R.string.open, R.string.close);
+        drawerToggle.syncState();
+        mDrawerLayout.setDrawerListener(drawerToggle);
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
