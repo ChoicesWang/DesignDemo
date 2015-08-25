@@ -30,6 +30,7 @@
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_margin="8dp"
+        app:actualImageScaleType="focusCrop"
         app:fadeDuration="200"
         app:placeholderImage="@color/wait_color"
         app:roundAsCircle="true" />

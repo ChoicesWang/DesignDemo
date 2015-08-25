@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package com.support.design;
+package com.support.design.Activitiy;
 
 import android.content.Intent;
+import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -26,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.support.design.R;
 
 
 /**
@@ -72,8 +74,9 @@ public class CheeseDetailActivity extends AppCompatActivity {
     }
 
     private void loadBackdrop() {
-        final SimpleDraweeView imageView = (SimpleDraweeView) findViewById(R.id.backdrop);
-        imageView.setImageURI(Uri.parse(mImageUrl));
+        final SimpleDraweeView mDraweeView = (SimpleDraweeView) findViewById(R.id.backdrop);
+        mDraweeView.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0.35f));
+        mDraweeView.setImageURI(Uri.parse(mImageUrl));
     }
 
     @Override

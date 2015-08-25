@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="6dp">
+    android:padding="2dp">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/draweeView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:actualImageScaleType="focusCrop"
         app:fadeDuration="200"
         app:placeholderImage="@color/wait_color"
-        app:roundedCornerRadius="3dp" />
+        app:viewAspectRatio="1.33" />
 
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#B0A7A7A7"
         android:ellipsize="end"
+        android:gravity="center_horizontal"
         android:singleLine="true"
-        android:gravity="center"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="#FFFFFFFF" />
 
-</LinearLayout>
+</RelativeLayout>

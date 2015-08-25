@@ -37,7 +37,34 @@ public class Constants {
             "http://pic.dofay.com/2014/10/27m05.jpg",
             "http://pic.dofay.com/2014/10/27m06.jpg",
             "http://pic.dofay.com/2014/10/27m07.jpg",
+            "http://pic.dofay.com/2014/10/27m08.jpg",
             "http://pic.dofay.com/2014/10/27m09.jpg",
 
+            //第五组
+            "http://pic.dofay.com/2014/09/29mt01.jpg",
+            "http://pic.dofay.com/2014/09/29mt02.jpg",
+            "http://pic.dofay.com/2014/09/29mt03.jpg",
+            "http://pic.dofay.com/2014/09/29mt04.jpg",
+            "http://pic.dofay.com/2014/09/29mt05.jpg",
+            "http://pic.dofay.com/2014/09/29mt06.jpg",
+            "http://pic.dofay.com/2014/09/29mt07.jpg",
+            "http://pic.dofay.com/2014/09/29mt08.jpg",
+            "http://pic.dofay.com/2014/09/29mt09.jpg",
+    };
+
+    public static final String[] CHEESE_STRINGS = {
+            "Abbaye", "Abbaye", "Abertam", "Abondance", "Ackawi",
+            "Acorn", "Adelost", "Affidelice", "Afuega", "Airag", "Airedale",
+            "Aisy Cendre", "Allgauer Emmentaler", "Alverca", "Ambert", "American Cheese",
+            "Chambertin", "Anejo Enchilado", "Anneau du Vic-Bilh", "Anthoriro", "Appenzell",
+            "Aragon", "Ardi Gasna", "Ardrahan", "Armenian String", "Aromesde Marc",
+            "Asadero", "Asiago", "Aubisque Pyrenees", "Autun", "Avaxtskyr", "Baby Swiss",
+            "Babybel", "Baguette Laonnaise", "Bakers", "Baladi", "Balaton", "Bandal", "Banon",
+            "Barry's Cheddar", "Basing", "Basket Cheese", "Bath Cheese", "Bavarian Bergkase",
+            "Baylough", "Beaufort", "Beauvoorde", "Beenleigh Blue", "Beer Cheese", "Bel Paese",
+            "Bergader", "Bergere Bleue", "Berkswell", "Beyaz Peynir", "Bierkase", "Bishop Kennedy",
+            "Blarney", "Bleu d'Auvergne", "Bleu de Gex", "Bleu de Laqueuille",
+            "Bleu de Septmoncel", "Bleu Des Causses", "Blue", "Blue Castello", "Blue Rathgore",
+            "Blue Vein Cheeses", "Bocconcini", "Bocconcini"
     };
 }

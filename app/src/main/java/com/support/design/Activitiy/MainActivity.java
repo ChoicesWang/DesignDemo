@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package com.support.design;
+package com.support.design.Activitiy;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -26,7 +25,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +32,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.support.design.fragment.CheeseListFragment;
+import com.support.design.R;
 import com.support.design.adapter.CustomPagerAdapter;
 
 /**
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         CustomPagerAdapter adapter = new CustomPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "资讯");
-        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "相册");
+        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.GRID), "相册");
         adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "信息");
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(DEFAULT_PAGES);
