@@ -107,7 +107,8 @@ public class CheeseListFragment extends Fragment {
 
     public static class MagicAdapter extends RecyclerView.Adapter<MeiziViewHolder> {
 
-        private int mBackground;
+//        private int mBackground;
+
         private List<String> mValues; //名字
         private HashMap<String, String> mImageMap; // 更加名字绑定的图片地址
 
@@ -117,11 +118,10 @@ public class CheeseListFragment extends Fragment {
 
         public MagicAdapter(Context context, List<String> items, int cellType) {
 
-            context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
+//            context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
+//            mBackground = mTypedValue.resourceId;
 
-            mBackground = mTypedValue.resourceId;
-            mValues = items;
-
+            this.mValues = items;
             this.cellType = cellType;
             mImageMap = new HashMap<>();
 
@@ -162,15 +162,18 @@ public class CheeseListFragment extends Fragment {
                     break;
             }
             View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
-            view.setBackgroundResource(mBackground);
+
+//            view.setBackgroundResource(mBackground);
+
             return new MeiziViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(final MeiziViewHolder holder, int position) {
-            holder.mName = mValues.get(position);
-            holder.mTextView.setText(mValues.get(position));
-            holder.mImageUrl = mImageMap.get(holder.mName);
+            String title = mValues.get(position);
+            holder.mName = title;
+            holder.mTextView.setText(title);
+            holder.mImageUrl = mImageMap.get(title);
             holder.mDraweeView.setImageURI(Uri.parse(holder.mImageUrl));
         }
 

@@ -35,9 +35,9 @@ public class MessageActivity extends AppCompatActivity {
 
     private void setupViewPager(@NonNull ViewPager viewPager) {
         CustomPagerAdapter adapter = new CustomPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CheeseListFragment(), "曹成");
-        adapter.addFragment(new CheeseListFragment(), "鲁野");
-        adapter.addFragment(new CheeseListFragment(), "小明");
+        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "曹成");
+        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "鲁野");
+        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "小明");
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(MainActivity.DEFAULT_PAGES);
     }
