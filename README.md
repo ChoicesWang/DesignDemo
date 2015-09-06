@@ -10,6 +10,6 @@ Material design
 ===========
 
 ###效果图：  
-![main](https://github.com/ChoicesWang/DesignDemo/blob/master/screen/00.png)
-![detail](https://github.com/ChoicesWang/DesignDemo/blob/master/screen/04.png)
-![navi](https://github.com/ChoicesWang/DesignDemo/blob/master/screen/54.png)
+![main](https://github.com/ChoicesWang/DesignDemo/blob/master/screen/device-2015-09-06-115327.png)
+![detail](https://github.com/ChoicesWang/DesignDemo/blob/master/screen/device-2015-09-06-115424.png)
+![navi](https://github.com/ChoicesWang/DesignDemo/blob/master/screen/device-2015-09-06-115403.png)
