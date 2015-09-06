@@ -32,9 +32,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.support.design.fragment.CheeseListFragment;
 import com.support.design.R;
-import com.support.design.adapter.CustomPagerAdapter;
+import com.support.design.fragment.CheeseListFragment;
+import com.support.design.fragment.CustomPagerAdapter;
 
 /**
  * Demo 主界面
@@ -121,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         CustomPagerAdapter adapter = new CustomPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "资讯");
-        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.GRID), "相册");
-        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "信息");
+        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "Glide");
+        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.GRID), "Fresco");
+        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.STAGGERED), "Fresco");
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(DEFAULT_PAGES);
     }
