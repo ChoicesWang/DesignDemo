@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -26,8 +28,14 @@ public class DraweeViewHolder extends BaseViewHolder<Photo> {
     public final SimpleDraweeView mDraweeView;
     public final TextView mTextView;
 
+    private Animation animation;
+    private View root;
+
+
     public DraweeViewHolder(View view) {
         super(view);
+
+        root = view;
         mTextView = (TextView) view.findViewById(R.id.text);
         mDraweeView = (SimpleDraweeView) view.findViewById(R.id.draweeView);
         mDraweeView.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0.3f));
@@ -43,10 +51,13 @@ public class DraweeViewHolder extends BaseViewHolder<Photo> {
                 context.startActivity(intent);
             }
         });
+
+        animation = AnimationUtils.loadAnimation(view.getContext(), R.anim.item_load);
     }
 
     @Override
     public void onBind(Photo photo) {
+        root.startAnimation(animation);
 
         mName = photo.name;
         mImageUrl = photo.url;

@@ -36,7 +36,6 @@
         </activity>
 
         <activity android:name=".Activitiy.CheeseDetailActivity" />
-        <activity android:name=".Activitiy.MessageActivity" />
 
     </application>
 

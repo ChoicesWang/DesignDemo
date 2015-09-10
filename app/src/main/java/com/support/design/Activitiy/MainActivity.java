@@ -121,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         CustomPagerAdapter adapter = new CustomPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "Glide");
         adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.GRID), "Fresco");
         adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.STAGGERED), "Fresco");
+        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "Glide");
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(DEFAULT_PAGES);
     }
