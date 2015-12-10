@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 /**
- * 安全版Handler，不会造成内存泄漏
+ * 安全版Handler，不会造成内存泄漏。使用Callback。
  * Memory safer implementation of android.os.Handler
  * <p/>
  * Original implementation of Handlers always keeps hard reference to handler in queue of execution.
