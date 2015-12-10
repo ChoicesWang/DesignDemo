@@ -17,6 +17,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // Flog是自定义Log
         if (BuildConfig.DEBUG) {
             Flog.DebugTree tree = new Flog.DebugTree();
             tree.setShowLine(false); // 是否打印类名和行号
