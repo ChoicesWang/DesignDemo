@@ -16,12 +16,17 @@
 
 package com.support.design.Activitiy;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -33,6 +38,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.support.design.R;
+import com.support.design.common.Flog;
 import com.support.design.fragment.CheeseListFragment;
 import com.support.design.fragment.CustomPagerAdapter;
 
@@ -95,6 +101,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("Choices"));
+
+    }
+
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Flog.d("intent getAction : %s", intent.getAction());
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
     }
 
     @Override
