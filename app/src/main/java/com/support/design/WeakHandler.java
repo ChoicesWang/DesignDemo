@@ -26,7 +26,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  * @see android.os.Handler
  * <p/>
- * Created by Dmytro Voronkevych on 17/06/2014.
+ * Created by choices on 17/06/2014.
  */
 @SuppressWarnings("unused")
 public class WeakHandler {
