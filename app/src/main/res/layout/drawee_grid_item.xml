@@ -8,11 +8,9 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/draweeView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="132dp"
         app:actualImageScaleType="focusCrop"
-        app:fadeDuration="200"
-        app:placeholderImage="@color/wait_color"
-        app:viewAspectRatio="1.33" />
+        app:placeholderImage="@color/wait_color" />
 
     <TextView
         android:id="@+id/text"

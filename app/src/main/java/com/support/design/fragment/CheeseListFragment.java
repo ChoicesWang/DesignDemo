@@ -20,15 +20,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.support.design.R;
-import com.support.design.adapter.FrescoRecycleAdapter;
-import com.support.design.adapter.GlideRecycleAdapter;
+import com.support.design.adapter.MyAdapter;
 import com.support.design.bean.Photo;
 import com.support.design.common.Constants;
 
@@ -41,16 +39,15 @@ import java.util.ArrayList;
  */
 public class CheeseListFragment extends Fragment {
 
-    public static final int LIST = 0;
-    public static final int GRID = 1;
-    public static final int STAGGERED = 2;
+    public static final int GLIDE = 0;
+    public static final int FRESCO = 1;
 
-    public static final String KEY = "Mode";
+    public static final String UTIL = "Util";
 
-    public static CheeseListFragment newInstance(int type) {
+    public static CheeseListFragment newInstance(int util) {
         CheeseListFragment fragment = new CheeseListFragment();
         Bundle b = new Bundle();
-        b.putInt(KEY, type);
+        b.putInt(UTIL, util);
         fragment.setArguments(b);
         return fragment;
     }
@@ -65,22 +62,19 @@ public class CheeseListFragment extends Fragment {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
 
-        RecyclerView.LayoutManager layoutManager = null;
         RecyclerView.Adapter adapter = null;
-        switch (getArguments().getInt(KEY)) {
-            case LIST:
-                layoutManager = new GridLayoutManager(getActivity(), 2);
-                adapter = new GlideRecycleAdapter(initData(), LIST);
+        Bundle bundle = getArguments();
+        switch (bundle.getInt(UTIL)) {
+            case GLIDE:
+                adapter = new MyAdapter(initData(), GLIDE);
                 break;
-            case GRID:
-                layoutManager = new GridLayoutManager(getActivity(), 2);
-                adapter = new FrescoRecycleAdapter(initData(), GRID);
-                break;
-            case STAGGERED:
-                layoutManager = new LinearLayoutManager(getActivity());
-                adapter = new FrescoRecycleAdapter(initData(), LIST);
+            case FRESCO:
+                adapter = new MyAdapter(initData(), FRESCO);
                 break;
         }
+
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
@@ -90,10 +84,13 @@ public class CheeseListFragment extends Fragment {
         int length = 100;
         ArrayList<Photo> mPhotos = new ArrayList<>();
 
+        int strLength = Constants.CHEESE_STRINGS.length;
+        int urlLength = Constants.IMAGES.length;
+
         for (int i = 0; i < length; i++) {
             Photo photo = new Photo();
-            photo.name = Constants.CHEESE_STRINGS[i % Constants.CHEESE_STRINGS.length];
-            photo.url = Constants.IMAGES[i % Constants.IMAGES.length];
+            photo.name = Constants.CHEESE_STRINGS[i % strLength];
+            photo.url = Constants.IMAGES[i % urlLength];
             mPhotos.add(photo);
         }
         return mPhotos;

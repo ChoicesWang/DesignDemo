@@ -21,12 +21,14 @@
 
     <application
         android:name=".MyApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.DesignDemo">
 
-        <activity android:name=".Activitiy.MainActivity">
+        <activity
+            android:name=".Activitiy.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +37,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activitiy.CheeseDetailActivity" />
+        <activity
+            android:name=".Activitiy.CheeseDetailActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

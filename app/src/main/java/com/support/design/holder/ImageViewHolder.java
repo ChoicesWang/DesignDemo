@@ -12,7 +12,7 @@ import com.support.design.R;
 import com.support.design.bean.Photo;
 
 
-public class ImageViewHolder extends BaseViewHolder<Photo> {
+public class ImageViewHolder extends BaseViewHolder {
 
     public String mName;
     public String mImageUrl;

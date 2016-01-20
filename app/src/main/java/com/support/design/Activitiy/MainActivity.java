@@ -30,6 +30,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -63,20 +64,18 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // 因为已经有ActionBarDrawerToggle了。他是个动画，所有就不需要下面这个 R.drawable.ic_menu
-
-//        final ActionBar ab = getSupportActionBar();
-//        if (ab != null) {
-//            ab.setHomeAsUpIndicator(R.drawable.ic_menu);
-//            ab.setDisplayHomeAsUpEnabled(true);
-//        }
+        final ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+            ab.setDisplayHomeAsUpEnabled(true);
+        }
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                toolbar, R.string.open, R.string.close);
-        drawerToggle.syncState();
-        mDrawerLayout.setDrawerListener(drawerToggle);
+//        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+//                toolbar, R.string.open, R.string.close);
+//        drawerToggle.syncState();
+//        mDrawerLayout.setDrawerListener(drawerToggle);
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -143,9 +142,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         CustomPagerAdapter adapter = new CustomPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.GRID), "Fresco");
-        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.STAGGERED), "Fresco");
-        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.LIST), "Glide");
+        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.GLIDE), "Glide");
+        adapter.addFragment(CheeseListFragment.newInstance(CheeseListFragment.FRESCO), "Fresco");
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(DEFAULT_PAGES);
     }
