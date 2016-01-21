@@ -2,11 +2,16 @@ package com.support.design;
 
 import android.app.Application;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.integration.okhttp.OkHttpUrlLoader;
+import com.bumptech.glide.load.model.GlideUrl;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.backends.okhttp.OkHttpImagePipelineConfigFactory;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.squareup.okhttp.OkHttpClient;
 import com.support.design.common.Flog;
+
+import java.io.InputStream;
 
 /**
  * Application
@@ -24,10 +29,14 @@ public class MyApplication extends Application {
             Flog.plant(tree);
         }
 
+        OkHttpClient okHttpClient = new OkHttpClient();
         //配置Fresco
         ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
-                .newBuilder(this, new OkHttpClient())
+                .newBuilder(this, okHttpClient)
                 .build();
         Fresco.initialize(this, config);
+
+        Glide.get(this).register(GlideUrl.class, InputStream.class,
+                new OkHttpUrlLoader.Factory(okHttpClient));
     }
 }

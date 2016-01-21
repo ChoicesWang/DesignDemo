@@ -26,6 +26,10 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.DesignDemo">
 
+        <meta-data
+            android:name="com.support.design.common.MyGlideModule"
+            android:value="GlideModule" />
+
         <activity
             android:name=".Activitiy.MainActivity"
             android:screenOrientation="portrait">

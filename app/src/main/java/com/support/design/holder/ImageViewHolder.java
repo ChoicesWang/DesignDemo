@@ -2,6 +2,7 @@ package com.support.design.holder;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,6 +52,5 @@ public class ImageViewHolder extends BaseViewHolder {
                 .placeholder(R.color.wait_color)
                 .crossFade()
                 .into(mImageVIew);
-
     }
 }
