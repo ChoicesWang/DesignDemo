@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.support.design.Activitiy;
+package com.support.design.activity;
 
 import android.content.Intent;
 import android.graphics.PointF;

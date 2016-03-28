@@ -4,12 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.net.Uri;
-import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.support.design.Activitiy.CheeseDetailActivity;
+import com.support.design.activity.CheeseDetailActivity;
 import com.support.design.R;
 import com.support.design.bean.Photo;
 

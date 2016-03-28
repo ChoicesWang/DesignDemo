@@ -2,13 +2,12 @@ package com.support.design.holder;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.support.design.Activitiy.CheeseDetailActivity;
+import com.support.design.activity.CheeseDetailActivity;
 import com.support.design.R;
 import com.support.design.bean.Photo;
 
