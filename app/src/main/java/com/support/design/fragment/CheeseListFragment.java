@@ -16,6 +16,14 @@
 
 package com.support.design.fragment;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Shader;
+import android.graphics.Xfermode;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -78,6 +86,7 @@ public class CheeseListFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
+        // recyclerView.addItemDecoration(new MyItemDecoration());
     }
 
     private ArrayList<Photo> initData() {
@@ -94,6 +103,37 @@ public class CheeseListFragment extends Fragment {
             mPhotos.add(photo);
         }
         return mPhotos;
+    }
+
+
+    public static class MyItemDecoration extends RecyclerView.ItemDecoration {
+
+        int layerId;
+        Paint paint = new Paint();
+        Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
+        LinearGradient linearGradient = new LinearGradient(0, 0, 0, 100, new int[]{0, Color.BLACK}, null, Shader.TileMode.CLAMP);
+
+        public MyItemDecoration() {
+            paint.setAntiAlias(true);
+        }
+
+        @Override
+        public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+            super.onDraw(c, parent, state);
+            // 主要为了提升性能
+            layerId = c.saveLayer(0, 0, parent.getWidth(), parent.getHeight(), null, Canvas.ALL_SAVE_FLAG);
+
+        }
+
+        @Override
+        public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
+            super.onDrawOver(c, parent, state);
+            paint.setXfermode(xfermode);
+            paint.setShader(linearGradient);
+            c.drawRect(0, 0, parent.getWidth(), 100, paint);
+            paint.setXfermode(null);
+            c.restoreToCount(layerId);
+        }
     }
 
 }

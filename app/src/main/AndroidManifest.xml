@@ -31,7 +31,7 @@
             android:value="GlideModule" />
 
         <activity
-            android:name=".Activitiy.MainActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +42,7 @@
         </activity>
 
         <activity
-            android:name=".Activitiy.CheeseDetailActivity"
+            android:name=".activity.CheeseDetailActivity"
             android:screenOrientation="portrait" />
 
     </application>

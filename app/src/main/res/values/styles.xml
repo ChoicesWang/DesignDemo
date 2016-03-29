@@ -32,4 +32,14 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="Theme.Translucent.DesignDemo" parent="Theme.DesignDemo">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- Note that we use the base animation style here (that is no
+             animations) because we really have no idea how this kind of
+             activity will be used. -->
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
+
 </resources>
