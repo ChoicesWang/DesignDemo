@@ -3,15 +3,16 @@ package com.support.design;
 import android.app.Application;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.integration.okhttp.OkHttpUrlLoader;
+import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.imagepipeline.backends.okhttp.OkHttpImagePipelineConfigFactory;
+import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
-import com.squareup.okhttp.OkHttpClient;
 import com.support.design.common.Flog;
 
 import java.io.InputStream;
+
+import okhttp3.OkHttpClient;
 
 /**
  * Application
